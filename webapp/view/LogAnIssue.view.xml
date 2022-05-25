@@ -1,0 +1,80 @@
+<mvc:View
+    controllerName="aj.loganissue.controller.LogAnIssue"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+    displayBlock="true"
+    xmlns="sap.m"
+> 
+    <Shell id="shell">
+        <App id="log"> 
+            <pages>
+                <Page id="page" title="{i18n>title}">
+                    <content> 
+                    <VBox class="sapUiSmallMargin" alignItems="Start" justifyContent="Center">
+				<HBox>
+						<VBox>
+                        <Label text="{i18n>company}" class="sapUiMediumMarginBegin" required="true"/>
+							<ComboBox id="CID" class="sapUiMediumMarginEnd sapUiMediumMarginBottom sapUiMediumMarginBegin" selectedKey="{MainModel>/newIssue/CompanyCode}" items="{/CompanyVH}" change="getCompanyCode">
+                            <core:Item key="{CompanyCode}" text="{CompanyCodeName}"/> 
+                            </ComboBox>
+						</VBox>
+						<VBox><Label text="{i18n>serviceTeam}" class="sapUiMediumMarginBegin" required="true"/>
+							<ComboBox id="serviceId" class="sapUiMediumMarginEnd sapUiMediumMarginBottom sapUiMediumMarginBegin" selectedKey="{MainModel>/newIssue/ServiceTeamCode}" items="{/ServiceTeamVH}" change="getServiceTeamCode"
+								>
+                                <core:Item key="{ServiceTeamCode}" text="{ServiceTeamName}"/> 
+                            </ComboBox>
+						</VBox>
+				</HBox>
+					<VBox><Label text="{i18n>typeOfIssue}" class="sapUiMediumMarginBegin" required="true"/>
+						<ComboBox id="issueId" class="sapUiMediumMarginEnd sapUiMediumMarginBottom sapUiMediumMarginBegin" selectedKey="{MainModel>/newIssue/TypeOfIssueCode}" items="{/TypeIssueVH}" change="getTypeOfIssueCode">
+                        <core:Item key="{TypeOfIssueCode}" text="{TypeOfIssueText}"/> 
+                            </ComboBox>
+					</VBox>
+					<VBox><Label text="{i18n>equipmentId}" class="sapUiMediumMarginBegin"/>
+                    
+						<!-- <MultiInput valueHelpOnly="true" valueHelpRequest="onValueHelpRequested"
+						 class="sapUiMediumMarginEnd sapUiMediumMarginBottom sapUiMediumMarginBegin" width="480px"/> -->
+
+
+                         <MultiInput tokens="{path: 'MainModel>/newIssue/IssueToEquipments'}" showValueHelp="true" valueHelpRequest="onValueHelpRequested" 
+								tokenUpdate="onWorkFlowNameTokenChange" change="onWorkFlowTableChange" class="sapUiMediumMarginEnd sapUiMediumMarginBottom sapUiMediumMarginBegin" width="28rem"  >
+								<tokens>
+									<Token key="{MainModel>EquipmentId}" text="{MainModel>EquipmentId}-{MainModel>EquipmentName}"/>
+								</tokens>
+							</MultiInput>
+					</VBox>
+					<VBox>
+                        <Label text="{i18n>subject}" class="sapUiMediumMarginBegin" required="true"/>
+						<Input id="subjectId" class="sapUiMediumMarginEnd sapUiMediumMarginBottom sapUiMediumMarginBegin" width="28.25rem" value="{MainModel>/newIssue/Subject}" valueState="None"/>
+					</VBox>
+					<VBox>
+						<Label text="{i18n>details}" class="sapUiMediumMarginBegin" required="true"/>
+						<TextArea liveChange="handleLiveChange" id="detailsId" showExceededText="true"
+							cols="60" height="100px" class="sapUiMediumMarginBegin"
+							placeholder="Enter Details on the issue" value="{MainModel>/newIssue/DetailIssue}"/>
+					</VBox>
+					<UploadCollection id="UploadCollection" multiple="true" sameFilenameAllowed="true" instantUpload="false"
+						noDataDescription="Drop files here to upload or use add button" fileDeleted="onFileDeleted" filenameLengthExceed="onFilenameLengthExceed"
+						fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete" class="sapUiMediumMarginBegin"
+						beforeUploadStarts="onBeforeUploadStarts" style="width: 28.35rem"/>
+                </VBox>
+
+                
+                
+
+
+                     </content>
+                     	<footer>
+			<OverflowToolbar>
+            <Button type="Reject" text="Back" />
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Submit" press="onSubmit" />
+			</OverflowToolbar>
+		</footer>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

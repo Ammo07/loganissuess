@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<SelectDialog id="dialogId" contentWidth="23em" class="sapUiContentPadding" items="{/EquipmentsVH}" confirm="onConfirm"
+		 multiSelect="true" search="onSearch" rememberSelections="true">
+		<StandardListItem  title="{EquipmentId}"  description="{EquipmentName}" key="{EquipmentId}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

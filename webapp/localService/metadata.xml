@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://s4hana2020.mindsetconsulting.com:44301/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://s4hana2020.mindsetconsulting.com:44301/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://s4hana2020.mindsetconsulting.com:44301/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://s4hana2020.mindsetconsulting.com:44301/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://s4hana2020.mindsetconsulting.com:44301/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://s4hana2020.mindsetconsulting.com:44301/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://s4hana2020.mindsetconsulting.com:44301/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://s4hana2020.mindsetconsulting.com:44301/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://s4hana2020.mindsetconsulting.com:44301/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zapi_facility_tools" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="EquipmentsType" sap:label="Equipments with issue" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="ServiceTeamCode"/>
+                    <PropertyRef Name="TypeOfIssueCode"/>
+                    <PropertyRef Name="EquipmentId"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="ServiceTeamCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Service Team element"/>
+                <Property Name="TypeOfIssueCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Type of Issue" sap:heading=""/>
+                <Property Name="EquipmentId" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Equipment" sap:quickinfo="Equipment Number"/>
+                <Property Name="CreatedOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created on" sap:quickinfo="Date on which the record was created"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created by" sap:quickinfo="Name of Person who Created the Object"/>
+                <NavigationProperty Name="to_LogIssue" Relationship="cds_zapi_facility_tools.assoc_B0263E7F728161A401B3D9A58A079956" FromRole="FromRole_assoc_B0263E7F728161A401B3D9A58A079956" ToRole="ToRole_assoc_B0263E7F728161A401B3D9A58A079956"/>
+            </EntityType>
+            <EntityType Name="LogIssueType" sap:label="Log an Issue Details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="ServiceTeamCode"/>
+                    <PropertyRef Name="TypeOfIssueCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="ServiceTeamCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Service Team element"/>
+                <Property Name="TypeOfIssueCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Type of Issue" sap:heading=""/>
+                <Property Name="Subjuct" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Char" sap:quickinfo="Character field of length 40"/>
+                <Property Name="DetailIssue" Type="Edm.String" sap:label="String"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+                <Property Name="ServiceTeamName" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/>
+                <Property Name="TypeOfIssueText" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/>
+                <NavigationProperty Name="to_Equipments" Relationship="cds_zapi_facility_tools.assoc_AC8A8938F8C3FA9F679941D69A5C5158" FromRole="FromRole_assoc_AC8A8938F8C3FA9F679941D69A5C5158" ToRole="ToRole_assoc_AC8A8938F8C3FA9F679941D69A5C5158"/>
+            </EntityType>
+            <EntityType Name="CompanyVHType" sap:label="Companies" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+            </EntityType>
+            <EntityType Name="EquipmentsVHType" sap:label="Equipments Value help" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="EquipmentId"/>
+                </Key>
+                <Property Name="EquipmentId" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Equipment" sap:quickinfo="Equipment Number"/>
+                <Property Name="EquipmentName" Type="Edm.String" MaxLength="40" sap:label="Object Description" sap:quickinfo="Description of technical object"/>
+            </EntityType>
+            <EntityType Name="ServiceTeamVHType" sap:label="Service Team Value Help" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ServiceTeamCode"/>
+                </Key>
+                <Property Name="ServiceTeamCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Lower Value" sap:quickinfo="Values for Domains: Single Value/Lower Limit"/>
+                <Property Name="ServiceTeamName" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <EntityType Name="TypeIssueVHType" sap:label="Types of Issues" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="TypeOfIssueCode"/>
+                </Key>
+                <Property Name="TypeOfIssueCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Lower Value" sap:quickinfo="Values for Domains: Single Value/Lower Limit"/>
+                <Property Name="TypeOfIssueText" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <Association Name="assoc_B0263E7F728161A401B3D9A58A079956" sap:content-version="1">
+                <End Type="cds_zapi_facility_tools.EquipmentsType" Multiplicity="1" Role="FromRole_assoc_B0263E7F728161A401B3D9A58A079956"/>
+                <End Type="cds_zapi_facility_tools.LogIssueType" Multiplicity="1" Role="ToRole_assoc_B0263E7F728161A401B3D9A58A079956"/>
+            </Association>
+            <Association Name="assoc_AC8A8938F8C3FA9F679941D69A5C5158" sap:content-version="1">
+                <End Type="cds_zapi_facility_tools.LogIssueType" Multiplicity="1" Role="FromRole_assoc_AC8A8938F8C3FA9F679941D69A5C5158">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zapi_facility_tools.EquipmentsType" Multiplicity="*" Role="ToRole_assoc_AC8A8938F8C3FA9F679941D69A5C5158"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_AC8A8938F8C3FA9F679941D69A5C5158">
+                        <PropertyRef Name="TypeOfIssueCode"/>
+                        <PropertyRef Name="ServiceTeamCode"/>
+                        <PropertyRef Name="CompanyCode"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_AC8A8938F8C3FA9F679941D69A5C5158">
+                        <PropertyRef Name="TypeOfIssueCode"/>
+                        <PropertyRef Name="ServiceTeamCode"/>
+                        <PropertyRef Name="CompanyCode"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="cds_zapi_facility_tools_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Equipments" EntityType="cds_zapi_facility_tools.EquipmentsType" sap:content-version="1"/>
+                <EntitySet Name="LogIssue" EntityType="cds_zapi_facility_tools.LogIssueType" sap:content-version="1"/>
+                <EntitySet Name="CompanyVH" EntityType="cds_zapi_facility_tools.CompanyVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="EquipmentsVH" EntityType="cds_zapi_facility_tools.EquipmentsVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ServiceTeamVH" EntityType="cds_zapi_facility_tools.ServiceTeamVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="TypeIssueVH" EntityType="cds_zapi_facility_tools.TypeIssueVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_B0263E7F728161A401B3D9A58A079956" Association="cds_zapi_facility_tools.assoc_B0263E7F728161A401B3D9A58A079956" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Equipments" Role="FromRole_assoc_B0263E7F728161A401B3D9A58A079956"/>
+                    <End EntitySet="LogIssue" Role="ToRole_assoc_B0263E7F728161A401B3D9A58A079956"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_AC8A8938F8C3FA9F679941D69A5C5158" Association="cds_zapi_facility_tools.assoc_AC8A8938F8C3FA9F679941D69A5C5158" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="LogIssue" Role="FromRole_assoc_AC8A8938F8C3FA9F679941D69A5C5158"/>
+                    <End EntitySet="Equipments" Role="ToRole_assoc_AC8A8938F8C3FA9F679941D69A5C5158"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="cds_zapi_facility_tools.cds_zapi_facility_tools_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zapi_facility_tools.cds_zapi_facility_tools_Entities/LogIssue" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DetailIssue"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Equipments"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>DetailIssue</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://s4hana2020.mindsetconsulting.com:44301/sap/opu/odata/sap/ZAPI_FACILITY_TOOLS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://s4hana2020.mindsetconsulting.com:44301/sap/opu/odata/sap/ZAPI_FACILITY_TOOLS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
